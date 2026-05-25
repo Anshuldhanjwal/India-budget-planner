@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcfcfd;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -12,15 +12,81 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Printing Utilities */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: black !important;
+  }
+
+  details {
+    display: block !important;
+    break-inside: avoid;
+  }
+
+  details[open] {
+    display: block !important;
+  }
+
+  details > summary ~ * {
+    display: block !important;
+  }
+
+  summary::-webkit-details-marker {
+    display: none !important;
+  }
+
+  summary {
+    font-weight: bold;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 0.5em;
+  }
+}
+
+/* Emergency card isolation print */
+@media print {
+  .emergency-card-print-mode .emergency-card {
+    position: absolute;
+    top: 5mm;
+    left: 5mm;
+    width: 85mm !important;
+    height: 55mm !important;
+    font-size: 8pt !important;
+    border: 1px solid #000 !important;
+    padding: 3mm !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+    page-break-inside: avoid;
+    z-index: 9999999;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    font-family: monospace !important;
+  }
+  
+  .emergency-card-print-mode .emergency-card * {
+    color: black !important;
+  }
+
+  .emergency-card-print-mode *:not(.emergency-card):not(.emergency-card *) {
+    display: none !important;
+  }
 }

@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# India Budget Trip Planner 🇮🇳
 
-## Getting Started
+A self-contained Next.js 14 budget trip planning web application for destinations across India. It supports metros, heritage cities, hill stations, offbeat villages, Himalayan treks, and spiritual destinations.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **109 Destinations & Coords**: Real geographic coordinate support with Haversine x1.3 road distance fallback.
+- **60+ Real Trains**: Integrates real Indian train routes with estimated costs (SL, 3A, 2A) and direct IRCTC search links.
+- **Trekking Engine**: Supports 20 major Himalayan and regional treks with daily itineraries, permits, campsites, and local gear rental information.
+- **DIY vs Package Cost comparison**: Compares trekking budgets side-by-side.
+- **Offline Network & ATM Warning System**: Critical red banners and packing alerts if a destination has poor network coverage (BSNL SIM required) or lacks local ATMs.
+- **Printable Emergency Wallet Card**: Isolated 85x55mm printable emergency contact card for wallet storage, supporting offline phone calls and hospital listings.
+- **Group Cost Splitter**: Divide trip expenses equally or perform "smart splits" excluding non-participants, with WhatsApp share buttons.
+- **Comparison Page**: Side-by-side comparison matrix for two different destinations.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 14 (App Router) + Tailwind CSS + Lucide Icons
+- **Backend**: Next.js API Routes (fully self-contained, no external database or API keys required)
+- **Deployment**: Vercel-ready
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Local Setup
 
-## Learn More
+1. Clone the repository and navigate to the project directory:
+   ```bash
+   cd budget_planner
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## Sample URLs for Testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **City Trip (Direct Route)**:
+  [http://localhost:3000/results?source=Delhi&destination=Mumbai&startDate=2026-06-01&days=5&travelers=2&budget=budget](http://localhost:3000/results?source=Delhi&destination=Mumbai&startDate=2026-06-01&days=5&travelers=2&budget=budget)
+- **Trek Trip (Multi-leg + Altitude Warning)**:
+  [http://localhost:3000/results?source=Delhi&destination=Kedarkantha&startDate=2026-01-15&days=8&travelers=2&budget=budget](http://localhost:3000/results?source=Delhi&destination=Kedarkantha&startDate=2026-01-15&days=8&travelers=2&budget=budget)
+- **Side-by-Side Comparison**:
+  [http://localhost:3000/compare?dest1=Kasol&dest2=Kheerganga&source=Delhi&days=4&travelers=2&budget=budget&startDate=2026-06-01](http://localhost:3000/compare?dest1=Kasol&dest2=Kheerganga&source=Delhi&days=4&travelers=2&budget=budget&startDate=2026-06-01)
