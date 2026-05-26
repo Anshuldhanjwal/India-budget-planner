@@ -90,3 +90,47 @@ body {
     display: none !important;
   }
 }
+
+/* Custom Tab Bar and Printing Styles */
+.tab-bar {
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.min-width-fit-content {
+  min-width: fit-content !important;
+}
+
+.white-space-nowrap {
+  white-space: nowrap !important;
+}
+
+html.print-itinerary-mode {
+  @media print {
+    body > * { 
+      display: none !important; 
+    }
+    
+    [data-tab-panel="itinerary"] { 
+      display: block !important;
+      position: static !important;
+    }
+    
+    details { 
+      display: block !important; 
+    }
+    
+    details > summary ~ * { 
+      display: block !important; 
+    }
+    
+    .tab-bar, 
+    .no-print, 
+    nav { 
+      display: none !important; 
+    }
+  }
+}
+
